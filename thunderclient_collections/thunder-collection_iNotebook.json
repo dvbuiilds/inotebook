@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "iNotebook",
-    "dateExported": "2023-02-26T10:17:06.663Z",
+    "dateExported": "2023-02-26T17:03:32.067Z",
     "version": "1.1",
     "folders": [
         {
@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2023-02-24T09:46:23.458Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "be7c0bad-9aeb-487d-a37a-b1e969954cba",
+            "name": "Notes",
+            "containerId": "",
+            "created": "2023-02-26T12:04:39.884Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -22,7 +29,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2023-02-24T09:46:43.981Z",
-            "modified": "2023-02-26T10:03:15.950Z",
+            "modified": "2023-02-26T10:46:43.790Z",
             "headers": [
                 {
                     "name": "Content-Type",
@@ -32,9 +39,151 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"dhairya\",\n  \"email\": \"dhairya16@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "raw": "{\n  \"name\": \"dhairya\",\n  \"email\": \"dhairya@gmail.com\",\n  \"password\": \"123456\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "d039e51d-80da-4b5b-a546-3977a9f36abc",
+            "colId": "3bef4472-9d23-4597-b0d4-cb4d40d86bae",
+            "containerId": "34f663e9-46ed-4527-8040-c9f6dc9ddc3f",
+            "name": "User login using credentials",
+            "url": "localhost:5000/api/auth/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-02-26T10:45:33.326Z",
+            "modified": "2023-02-26T10:49:53.893Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"dhairya@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dae071ab-7b9f-4761-aac9-4fb9326da8c9",
+            "colId": "3bef4472-9d23-4597-b0d4-cb4d40d86bae",
+            "containerId": "34f663e9-46ed-4527-8040-c9f6dc9ddc3f",
+            "name": "Getuser",
+            "url": "localhost:5000/api/auth/getuser",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-02-26T11:09:53.186Z",
+            "modified": "2023-02-26T12:00:42.375Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"dhairya@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4cbd84a9-1c95-455a-8e18-a94622c78c4f",
+            "colId": "3bef4472-9d23-4597-b0d4-cb4d40d86bae",
+            "containerId": "be7c0bad-9aeb-487d-a37a-b1e969954cba",
+            "name": "Fetch all notes",
+            "url": "localhost:5000/api/notes/allnotes",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-02-26T12:05:39.927Z",
+            "modified": "2023-02-26T17:03:05.136Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d917a965-525a-4007-b388-6bb6e67804bb",
+            "colId": "3bef4472-9d23-4597-b0d4-cb4d40d86bae",
+            "containerId": "be7c0bad-9aeb-487d-a37a-b1e969954cba",
+            "name": "Add notes",
+            "url": "localhost:5000/api/notes/addnote",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-02-26T12:44:05.470Z",
+            "modified": "2023-02-26T14:06:59.726Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\" : \"Complete DSA prep\",\n  \"description\" : \"Long ago there was a king who used to own a wealth of more than $30B.\",\n  \"tag\": \"tech\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "db1f9ba9-27e3-4039-9816-86fb1c6d1952",
+            "colId": "3bef4472-9d23-4597-b0d4-cb4d40d86bae",
+            "containerId": "be7c0bad-9aeb-487d-a37a-b1e969954cba",
+            "name": "Update note",
+            "url": "localhost:5000/api/notes/updatenote/63fb54b2004a15575e4598ce",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2023-02-26T15:11:01.930Z",
+            "modified": "2023-02-26T15:20:26.351Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Everything is temporary.\",\n  \"description\": \"God is great.\",\n  \"tag\": \"spirituality\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6dda3ca7-12eb-4a7e-a807-bbad964b9185",
+            "colId": "3bef4472-9d23-4597-b0d4-cb4d40d86bae",
+            "containerId": "be7c0bad-9aeb-487d-a37a-b1e969954cba",
+            "name": "Delete note",
+            "url": "localhost:5000/api/notes/deletenote/63fb54b2004a15575e4598ce",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2023-02-26T16:11:18.506Z",
+            "modified": "2023-02-26T16:39:35.951Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ]
