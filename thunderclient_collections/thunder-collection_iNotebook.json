@@ -1,0 +1,41 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "iNotebook",
+    "dateExported": "2023-02-26T10:17:06.663Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "34f663e9-46ed-4527-8040-c9f6dc9ddc3f",
+            "name": "Authentication",
+            "containerId": "",
+            "created": "2023-02-24T09:46:23.458Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "41b6c031-a3c3-4569-befd-ca2aa1c5b4fd",
+            "colId": "3bef4472-9d23-4597-b0d4-cb4d40d86bae",
+            "containerId": "34f663e9-46ed-4527-8040-c9f6dc9ddc3f",
+            "name": "Create a new user",
+            "url": "localhost:5000/api/auth/createuser",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-02-24T09:46:43.981Z",
+            "modified": "2023-02-26T10:03:15.950Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"dhairya\",\n  \"email\": \"dhairya16@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
