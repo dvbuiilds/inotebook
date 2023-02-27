@@ -45,11 +45,51 @@ const NoteState = (props) => {
     },
   ];
   const [notes, setNotes] = useState(notesInit);
+
+  // add a note.
+  const addNote = ({title, description, tag})=>{
+    // Todo: API call.
+    console.log("Adding a new node.");
+    const note = {
+      _id: makeString(24),
+      user: "63fb3893817dee705e2d0508",
+      title: title,
+      description:description,
+      tag: tag,
+      date: Date.now(),
+      __v: 0,
+    };
+    setNotes(notes.concat(note))
+  }
+
+  // delete a note.
+  const deleteNote = (id)=>{
+    // console.log('deleting the note with note.id', id);
+    let newNotes = notes.filter((note)=>{return note._id !== id});
+    setNotes(newNotes);
+  }
+  
+  // update a note.
+  const updateNote = ()=>{}
+
   return (
-    <NoteContext.Provider value={{ notes, setNotes }}>
+    <NoteContext.Provider value={{ notes, setNotes, addNote, deleteNote, updateNote }}>
       {props.children}
     </NoteContext.Provider>
   );
 };
+
+//generates a random string.
+function makeString(length) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
 
 export default NoteState;
