@@ -20,7 +20,7 @@ router.get("/allnotes", getUser, async (req, res) => {
 });
 
 // Route 2. Add a new note using POST "/api/notes/addnote". Login Required.
-router.get(
+router.post(
   "/addnote",
   getUser,
   [
