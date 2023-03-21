@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import AddNote from "../context/notes/AddNote";
+import AddNote from "./AddNote";
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 
 const Notes = () => {
   const context = useContext(NoteContext);
   // eslint-disable-next-line
-  const { notes, fetchAllNotes } = context;
+  const { notes, fetchAllNotes, setNotes, updateNote } = context;
   const ref = useRef(null);
+  const refClose = useRef(null);
   useEffect(() => {
     (async () => {
       await fetchAllNotes();
@@ -15,12 +16,14 @@ const Notes = () => {
     // eslint-disable-next-line
   }, []);
   const [note, setNote] = useState({ editTitle: "", editDescription: "", editTag: "" });
-  const updateNote = (currentNote) => {
+  const updateThisNote = (currentNote) => {
     ref.current.click();
-    setNote({editTitle: currentNote.title, editDescription: currentNote.description, editTag: currentNote.tag});
+    setNote({id: currentNote._id, editTitle: currentNote.title, editDescription: currentNote.description, editTag: currentNote.tag});
   }
   const handleClick = (e) => {
-    e.preventDefault();
+    // updateNote();
+    updateNote(note.id, note.editTitle, note.editDescription, note.editTag);
+    refClose.current.click();
   };
   const onChange = (e) => {
     // console.log('e.target.value', e.target.value);
@@ -59,21 +62,23 @@ const Notes = () => {
                     <label htmlFor="editTag" className="form-label">Tag</label>
                     <input onChange={onChange} type="text" className="form-control" id="editTag" name="editTag" value={note.editTag}/>
                   </div>
-                  <button type="submit" onClick={handleClick} className="btn btn-primary" > Submit </button>
+                  <div className="modal-footer">
+                    <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" disabled={note.editTitle.length <= 5 && note.editDescription.length <= 5} onClick={handleClick} className="btn btn-primary">Save</button>
+                  </div>
+                  {/* <button type="submit" disabled={note.editTitle.length <= 5 && note.editDescription.length <= 5} onSubmit={handleClick} className="btn btn-primary" > Submit </button> */}
                 </form>
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save</button>
-              </div>
+              
             </div>
           </div>
         </div>
       </div>
       <div className="row my-3">
         <h3>Your Notes</h3>
+        <p>{notes.length === 0 && "No notes to display!"}</p>
         {notes.map((note) => (
-          <NoteItem key={note._id} note={note} updateNote={updateNote} />
+          <NoteItem key={note._id} note={note} updateNote={updateThisNote} />
         ))}
       </div>
     </>

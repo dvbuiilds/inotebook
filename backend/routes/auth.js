@@ -58,21 +58,22 @@ router.post(
   [body("email").isEmail(), body("password").isLength({ min: 6 })],
   async (req, res) => {
     const errs = validationResult(req);
+    let success = false;
 
     if (!errs.isEmpty()) {
-      return res.status(400).json({ errors: errs });
+      return res.status(400).json({ success, errors: errs });
     }
 
     const { email, password } = req.body;
     try {
       let user = await User.findOne({ email: email });
       if (!user) {
-        return res.status(400).json({ error: "Incorrect credentials!" });
+        return res.status(400).json({ success, error: "Incorrect credentials!" });
       }
 
       const passwordMatch = await bcrypt.compare(password, user.password);
       if (!passwordMatch) {
-        return res.status(400).json({ error: "Incorrect credentials!" });
+        return res.status(400).json({ success, error: "Incorrect credentials!" });
       }
 
       const payload = {
@@ -81,7 +82,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(payload, JWT_SECRET);
-      res.json({ name: user.name, authToken: authToken });
+      success = true;
+      res.json({ success, name: user.name, authToken: authToken });
     } catch (error) {
       console.log("error.message", error.message);
       res.status(500).send("Internal Server Error occured.");

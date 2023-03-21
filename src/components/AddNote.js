@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import NoteContext from "./NoteContext";
+import NoteContext from "../context/notes/NoteContext";
 
 const AddNote = () => {
   const context = useContext(NoteContext);
@@ -8,6 +8,7 @@ const AddNote = () => {
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note);
+    setNote({ title: "", description: "", tag: "" });
   };
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -29,12 +30,12 @@ const AddNote = () => {
               name="title"
               aria-describedby=""
               placeholder="Title should be unique."
+              value={note.title}
             />
           </div>
           <div className="mb-3">
             <label htmlFor="description" className="form-label">
-              {" "}
-              Description{" "}
+              Description
             </label>
             <textarea
               onChange={onChange}
@@ -42,12 +43,12 @@ const AddNote = () => {
               className="form-control"
               id="description"
               name="description"
+              value={note.description}
             />
           </div>
           <div className="mb-3">
             <label htmlFor="tag" className="form-label">
-              {" "}
-              Tag{" "}
+              Tag
             </label>
             <input
               onChange={onChange}
@@ -55,15 +56,16 @@ const AddNote = () => {
               className="form-control"
               id="tag"
               name="tag"
+              value={note.tag}
             />
           </div>
           <button
             type="submit"
             onClick={handleClick}
             className="btn btn-primary"
+            disabled={note.title.length <= 5 && note.description.length <= 5}
           >
-            {" "}
-            Submit{" "}
+            Submit
           </button>
         </form>
       </div>

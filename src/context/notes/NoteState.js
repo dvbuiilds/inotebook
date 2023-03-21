@@ -46,11 +46,8 @@ const NoteState = (props) => {
   // add a note.
   const addNote = async ({ title, description, tag }) => {
     const jsonRes = await getAPIresponse(`${hostURL}addnote`, "POST", {title, description, tag});
-    console.log('jsonRes', jsonRes);
-    // Todo: API call.
-    console.log("Adding a new node.");
     const note = {
-      _id: makeString(24),
+      _id: jsonRes._id  ,
       user: "63fb3893817dee705e2d0508",
       title: title,
       description: description,
@@ -64,8 +61,6 @@ const NoteState = (props) => {
   // delete a note.
   const deleteNote = async (id) => {
     const jsonRes = await getAPIresponse(`${hostURL}deletenote/${id}`, "DELETE", {});
-    // console.log('deleting the note with note.id', id);
-    console.log('jsonRes', jsonRes);
     let newNotes = notes.filter((note) => {
       return note._id !== id;
     });
@@ -74,8 +69,8 @@ const NoteState = (props) => {
 
   // update a note.
   const updateNote = async (id, title, description, tag) => {
-    // eslint-disable-next-line
-    const jsonRes = await getAPIresponse(`${hostURL}updatenote/${id}`, "PUT", {});
+    const jsonRes = await getAPIresponse(`${hostURL}updatenote/${id}`, "PUT", {title, description, tag});
+
     for (let i = 0; i < notes.length; i++) {
       if (id === notes[i]._id) {
         notes[i].title = title;
@@ -86,7 +81,7 @@ const NoteState = (props) => {
   };
 
   return (
-    <NoteContext.Provider
+    <NoteContext.Provider 
       value={{ notes, fetchAllNotes, setNotes, addNote, deleteNote, updateNote }}
     >
       {props.children}

@@ -10,6 +10,7 @@ import About from './components/About';
 import NoteState from './context/notes/NoteState';
 import Footer from './components/Footer';
 import Alert from './components/Alert';
+import { Login } from './components/Login';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/about">
             <About />
           </Route>
+          <Route exact path="/login"><Login/></Route>
         </Switch>
       </Router>
     </NoteState>
