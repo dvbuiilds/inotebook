@@ -2,12 +2,12 @@ import React from "react";
 import Notes from "./Notes";
 
 
-const Home = () => {
+const Home = (props) => {
 
   return (
     <>
       <div className="container">
-        <Notes />
+        <Notes displayAlert={props.displayAlert} />
       </div>
     </>
   );

@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
+import AlertContext from "../context/alert/AlertContext";
 import NoteContext from "../context/notes/NoteContext";
 
 const AddNote = () => {
-  const context = useContext(NoteContext);
-  const { addNote } = context;
+  const { displayAlert } = useContext(AlertContext);
+  const { addNote } = useContext(NoteContext);
   const [note, setNote] = useState({ title: "", description: "", tag: "" });
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note);
     setNote({ title: "", description: "", tag: "" });
+    displayAlert( "Note has been created!", "Success");
   };
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
