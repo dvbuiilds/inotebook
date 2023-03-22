@@ -15,8 +15,7 @@ const NoteState = (props) => {
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
-            authToken:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw",
+            authToken: localStorage.getItem("token") // ?localStorage.getItem("token"):"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw",
           },
           body: JSON.stringify(data)
         }
@@ -29,8 +28,7 @@ const NoteState = (props) => {
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
-            authToken:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw",
+            authToken: localStorage.getItem("token") // ?localStorage.getItem("token"):"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmYjM4OTM4MTdkZWU3MDVlMmQwNTA4In0sImlhdCI6MTY3NzQwODU5M30.OPEcdAtthMVwYLXr9T2bB7yFwwB3JC65f-pkLGBcYgw",
           }
         }
       );
@@ -60,7 +58,7 @@ const NoteState = (props) => {
 
   // delete a note.
   const deleteNote = async (id) => {
-    const jsonRes = await getAPIresponse(`${hostURL}deletenote/${id}`, "DELETE", {});
+    await getAPIresponse(`${hostURL}deletenote/${id}`, "DELETE", {});
     let newNotes = notes.filter((note) => {
       return note._id !== id;
     });
@@ -69,7 +67,7 @@ const NoteState = (props) => {
 
   // update a note.
   const updateNote = async (id, title, description, tag) => {
-    const jsonRes = await getAPIresponse(`${hostURL}updatenote/${id}`, "PUT", {title, description, tag});
+    await getAPIresponse(`${hostURL}updatenote/${id}`, "PUT", {title, description, tag});
 
     for (let i = 0; i < notes.length; i++) {
       if (id === notes[i]._id) {
@@ -90,17 +88,17 @@ const NoteState = (props) => {
 };
 
 //generates a random string.
-function makeString(length) {
-  let result = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
-}
+// function makeString(length) {
+//   let result = "";
+//   const characters =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//   const charactersLength = characters.length;
+//   let counter = 0;
+//   while (counter < length) {
+//     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//     counter += 1;
+//   }
+//   return result;
+// }
 
 export default NoteState;

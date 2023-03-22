@@ -2,7 +2,7 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import Alert from './components/Alert';
 import { Login } from './components/Login';
 import { AlertState } from './context/alert/AlertState';
+
 
 function App() {
   return (

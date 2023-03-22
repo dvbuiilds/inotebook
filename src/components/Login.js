@@ -20,7 +20,6 @@ export const Login = () => {
             }
         );
         const res = await response.json();
-        // console.log('response', res);
         if(res.success){
             localStorage.setItem("token", res.authToken);
             history.push('/');

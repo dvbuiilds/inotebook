@@ -2,18 +2,22 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import AddNote from "./AddNote";
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
+import { useHistory } from "react-router-dom";
 
 const Notes = () => {
-  const context = useContext(NoteContext);
-  // eslint-disable-next-line
-  const { notes, fetchAllNotes, setNotes, updateNote } = context;
+  const { notes, fetchAllNotes, updateNote } = useContext(NoteContext);
   const ref = useRef(null);
   const refClose = useRef(null);
+  const history = useHistory();
   useEffect(() => {
-    (async () => {
-      await fetchAllNotes();
-    })();
-    // eslint-disable-next-line
+    if(localStorage.getItem("token")){
+      (async () => {
+        await fetchAllNotes();
+      })();
+    } else{
+      history.push("/login");
+    }
+    // eslint-disable-next-line 
   }, []);
   const [note, setNote] = useState({ editTitle: "", editDescription: "", editTag: "" });
   const updateThisNote = (currentNote) => {
