@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import Alert from './components/Alert';
 import { Login } from './components/Login';
 import { AlertState } from './context/alert/AlertState';
+import { Signup } from './components/Signup';
 
 
 function App() {
@@ -29,7 +30,12 @@ function App() {
             <Route exact path="/about">
               <About />
             </Route>
-            <Route exact path="/login"><Login/></Route>
+            <Route exact path="/login">
+              <Login/>
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
           </Switch>
         </Router>
       </NoteState>

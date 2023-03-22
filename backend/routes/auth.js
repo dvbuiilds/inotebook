@@ -40,7 +40,7 @@ router.post(
         const data = {
           user: { id: user.id },
         };
-        // console.log('user.id', user.id)
+        console.log('user.id', user.id)
         const authToken = jwt.sign(data, JWT_SECRET);
 
         res.json({ authToken: authToken });

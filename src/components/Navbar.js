@@ -25,7 +25,7 @@ const Navbar = () => {
                   <button className='btn btn-danger mx-1' onClick={logout}>Logout</button> 
                   : <div>
                       <Link className='btn btn-primary mx-1' role="button" to="/login">Login</Link>
-                      <Link className='btn btn-warning mx-1' role="button" to="/">Signup</Link>
+                      <Link className='btn btn-warning mx-1' role="button" to="/signup">Signup</Link>
                     </div>
               }
             </div>
